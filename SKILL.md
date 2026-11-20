@@ -29,7 +29,7 @@ case "$prefix" in /*) ;; *) echo 'Choose an absolute installation prefix.' >&2; 
   download=$(mktemp -d)
   trap 'rm -rf "$download"' EXIT
   cd "$download"
-  curl --proto '=https' --tlsv1.2 -fLsS 'https://github.com/alt-research/agent-signer/releases/download/agent-signer-v0.2.0/agent-signer-0.2.0-macos.tgz' -o 'agent-signer-0.2.0-macos.tgz'
+  curl --proto '=https' --tlsv1.2 -fLsS 'https://github.com/alt-research/agent-signer/releases/download/agent-signer-v0.2.0-setup.1/agent-signer-0.2.0-macos.tgz' -o 'agent-signer-0.2.0-macos.tgz'
   printf '%s  %s\n' '1979ff26435f0b94da4c80973668a3336d21cc5183ad015553d1146f91bba5f7' 'agent-signer-0.2.0-macos.tgz' | shasum -a 256 -c -
   npm install --global --prefix "$prefix" --ignore-scripts --offline --no-audit --no-fund './agent-signer-0.2.0-macos.tgz'
 )
@@ -53,7 +53,7 @@ If its settings prevent that, ask the owner to configure the client; do not chan
 permissions automatically or treat a blocked check as a missing connection.
 
 Connecting is the owner's step. Ask the owner to create a dedicated staging agent
-key at https://agentcard-staging.alt.technology/keys/ and run
+key at https://cards-staging.8004scan.io/keys/ and run
 `agent-signer --profile NAME connect` in their own terminal, entering the key at
 the hidden prompt. Never run connect or disconnect yourself or request a key in
 chat. Use the owner-selected profile; each client needs its own key. Keep the
