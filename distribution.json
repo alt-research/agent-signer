@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "repository": "alt-research/agent-signer",
+  "tag": "agent-signer-v0.2.0",
+  "version": "0.2.0",
+  "source": "071c1dfe022259abe949597bad5c48e53d5b1720",
+  "environment": "staging",
+  "backend": "https://agentcard-staging.alt.technology",
+  "archive": "agent-signer-0.2.0-macos.tgz",
+  "archiveSha256": "1979ff26435f0b94da4c80973668a3336d21cc5183ad015553d1146f91bba5f7",
+  "packagedSkillSha256": "34216624db914faff550d2c1f5131f64bebe02597b981bd98abfd54a20d9f660",
+  "publicSkillSha256": "71255ba0a23920ee203f835f1f3854b3bf2d6c4d84124fa80caafbbfaf344964",
+  "skillChange": "setup_section_only"
+}
