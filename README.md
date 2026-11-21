@@ -1,4 +1,4 @@
-# Agent Signer 0.2.0
+# Agent Signer 0.2.1
 
 Public distribution of the macOS Agent Signer CLI and its agent skill. The owner
 approves credential use on their iPhone. This is a **staging prerelease** connected
@@ -7,7 +7,7 @@ only to https://agentcard-staging.alt.technology, not a production release.
 Give your agent this versioned skill URL (or fetch it with curl):
 
 ```sh
-curl --proto '=https' --tlsv1.2 -fLsS 'https://github.com/alt-research/agent-signer/releases/download/agent-signer-v0.2.0-setup.1/SKILL.md'
+curl --proto '=https' --tlsv1.2 -fLsS 'https://github.com/alt-research/agent-signer/releases/download/agent-signer-v0.2.1/SKILL.md'
 ```
 
 Read the returned instructions before following them. They install the pinned
@@ -18,7 +18,7 @@ they are provenance records, not installation prerequisites.
 
 ## Setup, once
 
-This skill installs Agent Signer 0.2.0 from a pinned public GitHub
+This skill installs Agent Signer 0.2.1 from a pinned public GitHub
 Release. It connects to https://agentcard-staging.alt.technology. macOS (Apple
 silicon or Intel), Node.js 22+ and npm are required. No private repository access,
 GitHub login or npm registry credentials are needed.
@@ -38,9 +38,9 @@ case "$prefix" in /*) ;; *) echo 'Choose an absolute installation prefix.' >&2; 
   download=$(mktemp -d)
   trap 'rm -rf "$download"' EXIT
   cd "$download"
-  curl --proto '=https' --tlsv1.2 -fLsS 'https://github.com/alt-research/agent-signer/releases/download/agent-signer-v0.2.0-setup.1/agent-signer-0.2.0-macos.tgz' -o 'agent-signer-0.2.0-macos.tgz'
-  printf '%s  %s\n' '1979ff26435f0b94da4c80973668a3336d21cc5183ad015553d1146f91bba5f7' 'agent-signer-0.2.0-macos.tgz' | shasum -a 256 -c -
-  npm install --global --prefix "$prefix" --ignore-scripts --offline --no-audit --no-fund './agent-signer-0.2.0-macos.tgz'
+  curl --proto '=https' --tlsv1.2 -fLsS 'https://github.com/alt-research/agent-signer/releases/download/agent-signer-v0.2.1/agent-signer-0.2.1-macos.tgz' -o 'agent-signer-0.2.1-macos.tgz'
+  printf '%s  %s\n' '8ab69328d87bc7abcca1b28051ac94605a259c49753deefb9ffd8cbd167e8b0e' 'agent-signer-0.2.1-macos.tgz' | shasum -a 256 -c -
+  npm install --global --prefix "$prefix" --ignore-scripts --offline --no-audit --no-fund './agent-signer-0.2.1-macos.tgz'
 )
 export PATH="$prefix/bin:$PATH"
 "$prefix/bin/agent-signer" version
@@ -72,7 +72,7 @@ For an existing profile, check status before asking the owner to reconnect.
 
 ## Release contents
 
-- `agent-signer-0.2.0-macos.tgz`: unchanged dependency-free npm-format archive.
+- `agent-signer-0.2.1-macos.tgz`: unchanged dependency-free npm-format archive.
 - `SHA256SUMS` and `release-metadata.json`: original package evidence.
 - `SKILL.md`: the bundled skill with only its setup section replaced above.
 - `README.md`, `distribution.json` and `DISTRIBUTION_SHA256SUMS`: public

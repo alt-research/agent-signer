@@ -9,7 +9,7 @@ The owner keeps provider keys on their iPhone. The `agent-signer` command asks t
 
 ## Setup, once
 
-This skill installs Agent Signer 0.2.0 from a pinned public GitHub
+This skill installs Agent Signer 0.2.1 from a pinned public GitHub
 Release. It connects to https://agentcard-staging.alt.technology. macOS (Apple
 silicon or Intel), Node.js 22+ and npm are required. No private repository access,
 GitHub login or npm registry credentials are needed.
@@ -29,9 +29,9 @@ case "$prefix" in /*) ;; *) echo 'Choose an absolute installation prefix.' >&2; 
   download=$(mktemp -d)
   trap 'rm -rf "$download"' EXIT
   cd "$download"
-  curl --proto '=https' --tlsv1.2 -fLsS 'https://github.com/alt-research/agent-signer/releases/download/agent-signer-v0.2.0-setup.1/agent-signer-0.2.0-macos.tgz' -o 'agent-signer-0.2.0-macos.tgz'
-  printf '%s  %s\n' '1979ff26435f0b94da4c80973668a3336d21cc5183ad015553d1146f91bba5f7' 'agent-signer-0.2.0-macos.tgz' | shasum -a 256 -c -
-  npm install --global --prefix "$prefix" --ignore-scripts --offline --no-audit --no-fund './agent-signer-0.2.0-macos.tgz'
+  curl --proto '=https' --tlsv1.2 -fLsS 'https://github.com/alt-research/agent-signer/releases/download/agent-signer-v0.2.1/agent-signer-0.2.1-macos.tgz' -o 'agent-signer-0.2.1-macos.tgz'
+  printf '%s  %s\n' '8ab69328d87bc7abcca1b28051ac94605a259c49753deefb9ffd8cbd167e8b0e' 'agent-signer-0.2.1-macos.tgz' | shasum -a 256 -c -
+  npm install --global --prefix "$prefix" --ignore-scripts --offline --no-audit --no-fund './agent-signer-0.2.1-macos.tgz'
 )
 export PATH="$prefix/bin:$PATH"
 "$prefix/bin/agent-signer" version
@@ -148,6 +148,34 @@ For a task needing project or investor data, use a child program that reads the
 key directly from its environment and constructs the request headers in memory.
 Check the provider's application result before returning only the requested
 data. Never interpolate the key into shell arguments, URLs, logs or output.
+
+## Exa
+
+Use the selected profile and the connection/environment names from discovery:
+
+```sh
+agent-signer --profile research result check exa --key exa --env EXA_API_KEY
+```
+
+The check reads one public page through `POST https://api.exa.ai/contents`, with
+`x-api-key` authentication and text capped at 1,000 characters. It costs $0.001
+at published rates and prints only a sanitized outcome. HTTP 402 means the
+account's credits or spending budget prevent access. Do not retry a metered
+request automatically after a timeout.
+
+For a requested search, run a child program that reads the key from its environment:
+
+```sh
+agent-signer --profile research exec --key exa -- node search-exa.mjs
+```
+
+Have that program call `POST https://api.exa.ai/search`, put `process.env.EXA_API_KEY`
+in the `x-api-key` header in memory, and use `type: "lite"`, `numResults: 5` and
+the user's query. Check the HTTP status and response shape before returning only
+requested titles and URLs. Lite search costs $0.004 per request at published rates;
+additional calls consume credits. Never put the key in arguments, URLs or output.
+A released fixed key remains usable until revoked or rotated in Exa; an AgentCard
+grant does not narrow the provider's permissions.
 
 ## Calling an MCP server
 

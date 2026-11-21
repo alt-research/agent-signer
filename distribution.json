@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "repository": "alt-research/agent-signer",
-  "tag": "agent-signer-v0.2.0-setup.1",
-  "version": "0.2.0",
-  "setupRevision": 1,
-  "source": "071c1dfe022259abe949597bad5c48e53d5b1720",
+  "tag": "agent-signer-v0.2.1",
+  "version": "0.2.1",
+  "setupRevision": 0,
+  "source": "7a9cfe0dccc05fb1ecbe5ddc68659cf3d68caa06",
   "environment": "staging",
   "backend": "https://agentcard-staging.alt.technology",
-  "archive": "agent-signer-0.2.0-macos.tgz",
-  "archiveSha256": "1979ff26435f0b94da4c80973668a3336d21cc5183ad015553d1146f91bba5f7",
-  "packagedSkillSha256": "34216624db914faff550d2c1f5131f64bebe02597b981bd98abfd54a20d9f660",
-  "publicSkillSha256": "1facef42f2499b2c32e767ff48bf36bd55fc236c1fa8efb2a9efe987a333df27",
+  "archive": "agent-signer-0.2.1-macos.tgz",
+  "archiveSha256": "8ab69328d87bc7abcca1b28051ac94605a259c49753deefb9ffd8cbd167e8b0e",
+  "packagedSkillSha256": "fb027a860d28183936f3fccb70d27c87b643f9d52d202412fbf811974c468281",
+  "publicSkillSha256": "079355eb9389c49d5a803bb60090efb112d851aa20f5dab6040cdb2f34a9c4d8",
   "skillChange": "setup_section_only"
 }
